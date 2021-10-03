@@ -109,14 +109,25 @@ contract SimpleBank {
 
       // 2. Transfer Eth to the sender and decrement the withdrawal amount from
       //    sender's balance
-      balances[msg.sender] += withdrawAmount;
+        msg.sender.transfer(withdrawAmount);
+        balances[msg.sender] -= withdrawAmount;
+        return balances[msg.sender];
+       
+
+     
+
+
+        
+
       
+     
       
 
   
 
       // 3. Emit the appropriate event for this message
-     //Emit LogWithdrawal(msg.sender, withdrawAmount, newBalance);
+     
+    Emit LogWithdrawal(msg.sender, withdrawAmount, balances[msg.sender]);
 
     }
 }
