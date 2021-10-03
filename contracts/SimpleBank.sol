@@ -111,7 +111,7 @@ contract SimpleBank {
       //    sender's balance
         msg.sender.transfer(withdrawAmount);
         balances[msg.sender] -= withdrawAmount;
-        return balances[msg.sender];
+    
        
 
      
@@ -127,7 +127,9 @@ contract SimpleBank {
 
       // 3. Emit the appropriate event for this message
      
-    Emit LogWithdrawal(msg.sender, withdrawAmount, balances[msg.sender]);
+    emit LogWithdrawal(msg.sender, withdrawAmount, balances[msg.sender]);
+
+    return balances[msg.sender];
 
     }
 }
